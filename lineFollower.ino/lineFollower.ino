@@ -11,9 +11,9 @@ void setup() {
 }
 
 void loop() {
-  digitalWrite(motorA1, HIGH);
-  digitalWrite(motorA2, LOW);
+  digitalWrite(motorA1, LOW);
+  digitalWrite(motorA2, HIGH);
 
-  digitalWrite(motorB1, LOW);
+  digitalWrite(motorB1, HIGH);
   digitalWrite(motorB2, LOW);
 }
