@@ -21,6 +21,8 @@ void setup() {
   pinMode(rightSensor, INPUT);  
   pinMode(leftAnalog, INPUT);
   pinMode(rightAnalog, INPUT);
+
+  Serial.begin(9600);
 }
 
 
@@ -59,12 +61,25 @@ void back(){
 void loop(){
   int leftSensorValue = digitalRead(leftSensor);
   int rightSensorValue = digitalRead(rightSensor);
+
+  int leftAnalogValue = analogRead(leftAnalog);
+  int rightAnalogValue = analogRead(rightAnalog);
   
-  if(leftSensorValue==0 && rightSensorValue==0){
-    forward();
-  } if(leftSensorValue==1 && rightSensorValue==0){
-    left();
-  } if(leftSensorValue==0 && rightSensorValue==1){
+  if(leftAnalogValue<=300 && rightAnalogValue<=300){
+      forward();
+  } 
+  if(leftAnalogValue>=800 && leftAnalogValue<=1023){
+      left();
+  }
+  if (leftAnalogValue>=300 && leftAnalogValue<=780){
+        delay(300);
+        left();
+  }
+  if(rightAnalogValue>=800 && rightAnalogValue<=1023){
+    right();
+  }
+  if(rightAnalogValue>=300 && rightAnalogValue<=780){
+    delay(300);
     right();
   }
 }
