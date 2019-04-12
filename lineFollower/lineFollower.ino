@@ -16,13 +16,6 @@ void setup() {
   pinMode(rightSensor, INPUT);
 }
 
-void back(){
-  digitalWrite(motorA1, LOW);
-  digitalWrite(motorA2, HIGH);
-
-  digitalWrite(motorB1, HIGH);
-  digitalWrite(motorB2, LOW);
-}
 
 void forward(){  
   digitalWrite(motorA1, HIGH);
@@ -33,14 +26,6 @@ void forward(){
 }
 
 void left(){
-  digitalWrite(motorA1, HIGH);
-  digitalWrite(motorA2, LOW);
-
-  digitalWrite(motorB1, HIGH);
-  digitalWrite(motorB2, LOW);
-}
-
-void right(){
   digitalWrite(motorA1, LOW);
   digitalWrite(motorA2, HIGH);
 
@@ -48,17 +33,28 @@ void right(){
   digitalWrite(motorB2, HIGH);
 }
 
+void right(){
+  digitalWrite(motorA1, HIGH);
+  digitalWrite(motorA2, LOW);
 
+  digitalWrite(motorB1, HIGH);
+  digitalWrite(motorB2, LOW);
+}
+
+void back(){
+  digitalWrite(motorA1, LOW);
+  digitalWrite(motorA2, HIGH);
+
+  digitalWrite(motorB1, HIGH);
+  digitalWrite(motorB2, LOW);
+}
 
 void loop(){
-  int leftSensorValue = digitalRead(leftSensor);
-  int rightSensorValue = digitalRead(rightSensor);
-
-  if(leftSensorValue==0 && rightSensorValue==0){
+  if(leftSensor==0 && rightSensor==0){
     forward();
-  } else if(leftSensorValue==1 && rightSensorValue==0){
+  } else if(leftSensor==1 && rightSensor==0){
     left();
-  } else if(leftSensorValue==0 && rightSensorValue==1){
+  } else if(leftSensor==0 && rightSensor==1){
     right();
   }
 }
