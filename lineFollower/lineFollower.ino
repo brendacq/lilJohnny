@@ -55,18 +55,11 @@ void loop(){
   int leftSensorValue = digitalRead(leftSensor);
   int rightSensorValue = digitalRead(rightSensor);
   
-  if(leftSensorValue==0){
-    Serial.println("left zero");
-    delay(1000);
-  } else if(leftSensorValue==1){
-    Serial.println("left um");
-    delay(1000);
-  }
-  if(rightSensorValue==0){
-    Serial.println("rightt zero");
-    delay(1000);
-  } else if(rightSensorValue==1){
-    Serial.println("right um");
-    delay(1000);
+  if(leftSensorValue==0 && rightSensorValue==0){
+    forward();
+  } if(leftSensorValue==1 && rightSensorValue==0){
+    left();
+  } if(leftSensorValue==0 && rightSensorValue==1){
+    right();
   }
 }
