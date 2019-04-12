@@ -18,8 +18,6 @@ void setup() {
   Serial.begin(9600); //debugging
 }
 
-int leftSensorValue = digitalRead(leftSensor);
-int rightSensorValue = digitalRead(rightSensor);
 
 void forward(){  
   digitalWrite(leftMotorA, LOW);
@@ -54,12 +52,21 @@ void back(){
 }
 
 void loop(){
-  if(leftSensorValue==0){
-    Serial.println("zero");
-    delay(500);
-  } else if(leftSensorValue==1){
-    Serial.println("um");
-    delay(500);
-  }
+  int leftSensorValue = digitalRead(leftSensor);
+  int rightSensorValue = digitalRead(rightSensor);
   
+  if(leftSensorValue==0){
+    Serial.println("left zero");
+    delay(1000);
+  } else if(leftSensorValue==1){
+    Serial.println("left um");
+    delay(1000);
+  }
+  if(rightSensorValue==0){
+    Serial.println("rightt zero");
+    delay(1000);
+  } else if(rightSensorValue==1){
+    Serial.println("right um");
+    delay(1000);
+  }
 }
