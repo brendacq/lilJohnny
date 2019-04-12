@@ -14,7 +14,7 @@ void loop() {
   forward();
   delay(1000);
   left();
-  delay(200);
+  delay(800);
   forward();
   delay(1000);
 }
