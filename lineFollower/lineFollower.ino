@@ -1,60 +1,65 @@
-#define motorA1 3
-#define motorA2 4
-#define motorB1 5
-#define motorB2 6
+#define leftMotorA 5
+#define leftMotorB 6
+#define rightMotorA 3
+#define rightMotorB 4
 
 #define leftSensor 8
 #define rightSensor 9
 
 void setup() {
-  pinMode(motorA1, OUTPUT);
-  pinMode(motorA2, OUTPUT);
-  pinMode(motorB1, OUTPUT);
-  pinMode(motorB2, OUTPUT);
+  pinMode(leftMotorA, OUTPUT);
+  pinMode(leftMotorB, OUTPUT);
+  pinMode(rightMotorA, OUTPUT);
+  pinMode(rightMotorB, OUTPUT);
 
   pinMode(leftSensor, INPUT);
   pinMode(rightSensor, INPUT);
+
+  Serial.begin(9600); //debugging
 }
 
+int leftSensorValue = digitalRead(leftSensor);
+int rightSensorValue = digitalRead(rightSensor);
 
 void forward(){  
-  digitalWrite(motorA1, HIGH);
-  digitalWrite(motorA2, LOW);
+  digitalWrite(leftMotorA, LOW);
+  digitalWrite(leftMotorB, HIGH);
 
-  digitalWrite(motorB1, LOW);
-  digitalWrite(motorB2, HIGH);
+  digitalWrite(rightMotorA, HIGH);
+  digitalWrite(rightMotorB, LOW);
 }
 
 void left(){
-  digitalWrite(motorA1, LOW);
-  digitalWrite(motorA2, HIGH);
+  digitalWrite(leftMotorA, HIGH);
+  digitalWrite(leftMotorB, LOW);
 
-  digitalWrite(motorB1, LOW);
-  digitalWrite(motorB2, HIGH);
+  digitalWrite(rightMotorA, HIGH);
+  digitalWrite(rightMotorB, LOW);
 }
 
 void right(){
-  digitalWrite(motorA1, HIGH);
-  digitalWrite(motorA2, LOW);
+  digitalWrite(leftMotorA, LOW);
+  digitalWrite(leftMotorB, HIGH);
 
-  digitalWrite(motorB1, HIGH);
-  digitalWrite(motorB2, LOW);
+  digitalWrite(rightMotorA, LOW);
+  digitalWrite(rightMotorB, HIGH);
 }
 
 void back(){
-  digitalWrite(motorA1, LOW);
-  digitalWrite(motorA2, HIGH);
+  digitalWrite(leftMotorA, HIGH);
+  digitalWrite(leftMotorB, LOW);
 
-  digitalWrite(motorB1, HIGH);
-  digitalWrite(motorB2, LOW);
+  digitalWrite(rightMotorA, LOW);
+  digitalWrite(rightMotorB, HIGH);
 }
 
 void loop(){
-  if(leftSensor==0 && rightSensor==0){
-    forward();
-  } else if(leftSensor==1 && rightSensor==0){
-    left();
-  } else if(leftSensor==0 && rightSensor==1){
-    right();
+  if(leftSensorValue==0){
+    Serial.println("zero");
+    delay(500);
+  } else if(leftSensorValue==1){
+    Serial.println("um");
+    delay(500);
   }
+  
 }
